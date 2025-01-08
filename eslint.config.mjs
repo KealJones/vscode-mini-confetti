@@ -12,7 +12,7 @@ export default tseslint.config(
 	{
 		ignores: [
 			'.vscode-test',
-			'out',
+			'dist',
 		]
 	},
 	eslintConfigs.recommended,
