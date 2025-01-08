@@ -49,6 +49,8 @@ export function activate(context: vscode.ExtensionContext) {
     // Setup a timeout to remove the decoration after the length of the animation.
     new Promise((resolve) => setTimeout(resolve, lengthOfAnimation)).then(() => {
       confettiDecorationType?.dispose();
+    }).catch((e) => {
+      console.error('Error disposing decoration type:', e);
     });
   }
 
@@ -342,7 +344,7 @@ function getSvgDataUri(id: string) {
   return dataUri;
 }
 
-function objectToCssString(styles: Record<string, unknown>): string {
+function objectToCssString(styles: Record<string, string | number>): string {
   return Object.entries(styles)
     .map(([k, v]) => `${k}:${v}`)
     .join(';');

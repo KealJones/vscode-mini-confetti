@@ -6,8 +6,8 @@
 		"outDir": "out",
 		"sourceMap": true,
 		"strict": true,
-		"rootDir": "src",
+		"rootDir": ".",
 		"esModuleInterop": true,
 	},
-	"exclude": ["node_modules", ".vscode-test"]
+	"exclude": ["node_modules", ".vscode-test", "eslint.config.mjs"]
 }

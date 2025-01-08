@@ -3,8 +3,7 @@
  *
  * See https://eslint.style and https://typescript-eslint.io for additional linting options.
  */
-// @ts-check
-import {configs as eslintConfigs} from '@eslint/js';
+import eslintConfigs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 
@@ -13,12 +12,21 @@ export default tseslint.config(
 		ignores: [
 			'.vscode-test',
 			'dist',
+			'out',
+			'esbuild.js',
+			'eslint.config.mjs',
 		]
 	},
-	eslintConfigs.recommended,
+	eslintConfigs.configs.recommended,
 	...tseslint.configs.recommendedTypeChecked,
 	...tseslint.configs.stylistic,
 	{
+		languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
 		plugins: {
 			'@stylistic': stylistic
 		},
